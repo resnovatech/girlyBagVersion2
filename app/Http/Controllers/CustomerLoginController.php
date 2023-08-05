@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Brian2694\Toastr\Facades\Toastr;
 use DB;
+use Mail;
 use Image;
 use App\Category;
 use App\User;
@@ -61,6 +62,35 @@ class CustomerLoginController extends Controller
 
     }
 
+    public function customer_registration_post(Request $request){
+
+        $this->validate($request, [
+            'name' => 'required',
+            'email' => 'email | unique:users',
+            'lname' => 'required',
+            'password' => 'min:3',
+        ]);
+
+        $store_data = new User();
+        $store_data->name = $request->name;
+        $store_data->lname = $request->lname;
+        $store_data->non_verified_email = $request->email;
+        $store_data->password = Hash::make($request->password);
+        $store_data->save();
+
+                $customerId = $store_data->id;
+                Session::put('customerId',$customerId);
+
+
+                Mail::send('emails.emailVerificationEmail', ['id' => $customerId], function($message) use($request){
+                    $message->to($request->email);
+                    $message->subject('Confirmation Mail');
+                });
+
+        Toastr::success('Check Mail For Verification :)' ,'Success');
+        return redirect('customer_login')->with('success','Check Mail For Verification ');
+    }
+
 
     public function customer_data_store(Request $request){
 
@@ -75,19 +105,47 @@ class CustomerLoginController extends Controller
         $store_data = new User();
         $store_data->name = $request->name;
         $store_data->lname = $request->lname;
-        $store_data->email = $request->email;
+        $store_data->non_verified_email = $request->email;
         $store_data->password = Hash::make($request->password);
         $store_data->save();
 
                 $customerId = $store_data->id;
                 Session::put('customerId',$customerId);
 
-        //Toastr::success('Successfully Register :)' ,'Success');
-        return redirect()->route('customer_dashoard.login');
+
+                Mail::send('emails.passwordResetEmail', ['id' => $customerId], function($message) use($request){
+                    $message->to($request->email);
+                    $message->subject('Confirmation Mail');
+                });
+
+        Toastr::success('Check Mail For Verification :)' ,'Success');
+        return redirect()->route('customer_dashoard.login')->with('success','Check Mail For Verification ');
 
 
 
 
+
+    }
+
+
+    public function customer_login_post(Request $request){
+        $request->validate([
+            'email' => 'required|max:50',
+            'password' => 'required',
+        ]);
+
+
+			if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
+				// Redirect to dashboard
+				//Toastr::success('Successully login :)' ,'Success');
+				return redirect('/home');
+			} else {
+				// Search using username
+
+				// error
+			  //Toastr::error('Invalid email and password :)' ,'Error');
+				return redirect()->back();
+			}
 
     }
 
@@ -113,6 +171,31 @@ class CustomerLoginController extends Controller
 				return redirect()->back();
 			}
 		}
+
+
+       public function email_confirmation($id){
+
+        $userList = User::where('id',$id)->value('non_verified_email');
+        $store_data = User::find($id);
+        $store_data->email = $userList;
+        $store_data->save();
+
+       Toastr::success('Successfully Confirmed,Now Login:)' ,'Success');
+        return redirect()->route('customer_dashoard.login')->with('success','Successfully Confirmed,Now Login');
+
+       }
+
+
+       public function email_confirmation_account($id){
+
+        $userList = User::where('id',$id)->value('non_verified_email');
+        $store_data = User::find($id);
+        $store_data->email = $userList;
+        $store_data->save();
+
+        Toastr::success('Successfully Confirmed,Now Login:)' ,'Success');
+        return redirect('customer_login')->with('success','Successfully Confirmed,Now Login');
+       }
 
 
 

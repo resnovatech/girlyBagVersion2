@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\User;
+use Mail;
+use Session;
+use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -64,11 +67,32 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
-            'lname' => $data['lname'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-        ]);
+
+        // dd(1);
+        // return User::create([
+        //     'name' => $data['name'],
+        //     'lname' => $data['lname'],
+        //     'email' => $data['email'],
+        //     'password' => Hash::make($data['password']),
+        // ]);
+
+        $store_data = new User();
+        $store_data->name = $data['name'];
+        $store_data->lname = $data['lname'];
+        $store_data->non_verified_email = $data['email'];
+        $store_data->password = Hash::make($data['password']);
+        $store_data->save();
+
+                $customerId = $store_data->id;
+                Session::put('customerId',$customerId);
+
+
+                Mail::send('emails.passwordResetEmail', ['id' => $customerId], function($message) use($data){
+                    $message->to($data['email']);
+                    $message->subject('Confirmation Mail');
+                });
+
+        Toastr::success('Check Mail:)' ,'Success');
+        return redirect('customer_login');
     }
 }

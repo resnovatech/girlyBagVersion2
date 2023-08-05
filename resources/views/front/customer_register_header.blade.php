@@ -25,8 +25,9 @@ The GirlyBag
                 <div class="col-md-18 col-lg-12">
                     <h2 class="text-center">Create an Account</h2>
                     <div class="form-wrapper">
+                        <p>@include('flash_message')</p>
                         <p>To access your whishlist, address book and contact preferences and to take advantage of our speedy checkout, create an account with us now.</p>
-                        <form action="{{ route('register') }}" method="post"  class="needs-validation" novalidate>
+                        <form action="{{ route('customer_registration_post') }}" method="post"  class="needs-validation" novalidate>
                             @csrf
                             <div class="row">
                                 <div class="col-sm-9">

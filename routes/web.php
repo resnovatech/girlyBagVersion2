@@ -73,9 +73,14 @@ Route::post('/cart/update', 'CartController@update')->name('cart.update');
 Route::post('/cart/remove', 'CartController@remove')->name('cart.remove');
 Route::post('/cart/clear', 'CartController@clear')->name('cart.clear');
 
+Route::get('/email_confirmation_account/{id}', 'CustomerLoginController@email_confirmation_account')->name('email_confirmation_account');
 
+Route::get('/email_confirmation/{id}', 'CustomerLoginController@email_confirmation')->name('email_confirmation');
 Route::get('/customer/dashoard/login', 'CustomerLoginController@customer_login')->name('customer_dashoard.login');
 Route::get('/customer/dashoard/register', 'CustomerLoginController@customer_register')->name('customer_dashoard.register');
+
+Route::post('/customer_login_post', 'CustomerLoginController@customer_login_post')->name('customer_login_post');
+Route::post('/customer_registration_post', 'CustomerLoginController@customer_registration_post')->name('customer_registration_post');
 
 
 Route::get('/customer_login', 'CustomerLoginController@customer_login_header')->name('customer_dashoard_header.login');

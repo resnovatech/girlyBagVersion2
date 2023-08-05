@@ -26,8 +26,9 @@ The GirlyBag
                 <div class="col-md-18 col-lg-12">
                     <h2 class="text-center">Login From Here</h2>
                     <div class="form-wrapper">
+                        <p>@include('flash_message')</p>
                         <p>To access your whishlist, address book and contact preferences and to take advantage of our speedy checkout, login.</p>
-                        <form action="{{ route('login') }}" method="post" class="needs-validation" novalidate>
+                        <form action="{{ route('customer_login_post') }}" method="post" class="needs-validation" novalidate>
 
                             @csrf
 

@@ -37,7 +37,7 @@
             @if(Auth::guest())
             <div class="dropdn-form-wrapper">
                 <h5>Quick Login</h5>
-                <form action="{{ route('login') }}" method="post">
+                <form action="{{ route('customer_login_post') }}" method="post">
                     @csrf
                     <div class="form-group">
                         <input type="email" class="form-control form-control--sm "
