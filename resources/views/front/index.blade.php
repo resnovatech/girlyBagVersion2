@@ -4,7 +4,7 @@
 
 @section('title')
 
-    The GirlyBag
+    The GirlyBag 
 
 @endsection
 
@@ -112,7 +112,7 @@
                         </div>
                         <div class="banner__item__text">
                             <h2>Sanitary Napkin Collection</h2>
-                            <a href="{{ route('category') }}">Shop now</a>
+                            <a href="#">Shop now</a>
                         </div>
                     </div>
                 </div>
@@ -123,7 +123,7 @@
                         </div>
                         <div class="banner__item__text">
                             <h2>Baby Biaper Collection</h2>
-                            <a href="{{ route('category') }}">Shop now</a>
+                            <a href="#">Shop now</a>
                         </div>
                     </div>
                 </div>
@@ -134,7 +134,7 @@
                         </div>
                         <div class="banner__item__text">
                             <h2>Period Calculation</h2>
-                            <a href="{{ route('Calender') }}">Calculate now</a>
+                            <a href="#">Calculate now</a>
                         </div>
                     </div>
                 </div>
@@ -239,15 +239,15 @@
 
                                     </a>
                                     <div class="prd-circle-labels">
-                                        {{-- <a href="#"
+                                        <a href="#"
                                            class="circle-label-compare circle-label-wishlist--add js-add-wishlist mt-0"
                                            title="Add To Wishlist"><i class="icon-heart-stroke"></i></a>
                                         <a href="#"
                                            class="circle-label-compare circle-label-wishlist--off js-remove-wishlist mt-0"
                                            title="Remove From Wishlist"><i class="icon-heart-hover"></i></a>
-                                        <a class="circle-label-qview  prd-hide-mobile view-product"
-                                           data-productid="{{$latestproduct->id}}"><i class="icon-eye"></i><span>QUICK
-                                        VIEW</span></a> --}}
+                                        <!--<a class="circle-label-qview  prd-hide-mobile view-product"-->
+                                        <!--   data-productid="{{$latestproduct->id}}"><i class="icon-eye"></i><span>QUICK-->
+                                        <!--VIEW</span></a>-->
                                     </div>
                                 </div>
                                 <div class="prd-info">
@@ -276,21 +276,20 @@
                                     </div>
                                     <div class="prd-hovers">
                                         <div class="prd-circle-labels">
-                                            <div>
-                                                {{-- <a href="#"
+                                            <div><a href="#"
                                                     class="circle-label-compare circle-label-wishlist--add js-add-wishlist mt-0"
                                                     title="Add To Wishlist"><i class="icon-heart-stroke"></i></a><a
                                                     href="#"
                                                     class="circle-label-compare circle-label-wishlist--off js-remove-wishlist mt-0"
-                                                    title="Remove From Wishlist"><i class="icon-heart-hover"></i></a> --}}
+                                                    title="Remove From Wishlist"><i class="icon-heart-hover"></i></a>
                                             </div>
-                                            <div class="prd-hide-mobile">
-                                                {{-- <a class="circle-label-qview view-product" data-fancybox
-                                                   data-src="#news"
-                                                   data-productid="{{$latestproduct->id}}"><i
-                                                        class="icon-eye"></i><span>QUICK
-                                                VIEW</span></a> --}}
-                                            </div>
+                                            <!--<div class="prd-hide-mobile">-->
+                                            <!--    <a class="circle-label-qview view-product" data-fancybox-->
+                                            <!--       data-src="#news"-->
+                                            <!--       data-productid="{{$latestproduct->id}}"><i-->
+                                            <!--            class="icon-eye"></i><span>QUICK-->
+                                            <!--    VIEW</span></a>-->
+                                            <!--</div>-->
                                         </div>
                                         <div class="prd-price">
                                         <!--<div class="price-old">$ {{$latestproduct->discount_amount}}</div>-->
@@ -360,15 +359,15 @@
 
                                     </a>
                                     <div class="prd-circle-labels">
-                                        {{-- <a href="#"
+                                        <a href="#"
                                            class="circle-label-compare circle-label-wishlist--add js-add-wishlist mt-0"
                                            title="Add To Wishlist"><i class="icon-heart-stroke"></i></a>
                                         <a href="#"
                                            class="circle-label-compare circle-label-wishlist--off js-remove-wishlist mt-0"
                                            title="Remove From Wishlist"><i class="icon-heart-hover"></i></a>
-                                        <a class="circle-label-qview  prd-hide-mobile view-product"
-                                           data-productid="{{$latestproduct->id}}"><i class="icon-eye"></i><span>QUICK
-                                    VIEW</span></a> --}}
+                                    <!--    <a class="circle-label-qview  prd-hide-mobile view-product"-->
+                                    <!--       data-productid="{{$latestproduct->id}}"><i class="icon-eye"></i><span>QUICK-->
+                                    <!--VIEW</span></a>-->
                                     </div>
                                 </div>
                                 <div class="prd-info">
@@ -397,21 +396,20 @@
                                     </div>
                                     <div class="prd-hovers">
                                         <div class="prd-circle-labels">
-                                       <div>
-                                                {{--<a href="#"
+                                            <div><a href="#"
                                                     class="circle-label-compare circle-label-wishlist--add js-add-wishlist mt-0"
                                                     title="Add To Wishlist"><i class="icon-heart-stroke"></i></a><a
                                                     href="#"
                                                     class="circle-label-compare circle-label-wishlist--off js-remove-wishlist mt-0"
-                                                    title="Remove From Wishlist"><i class="icon-heart-hover"></i></a> --}}
+                                                    title="Remove From Wishlist"><i class="icon-heart-hover"></i></a>
                                             </div>
-                                            <div class="prd-hide-mobile">
-                                                {{-- <a class="circle-label-qview view-product" data-fancybox
-                                                   data-src="#news"
-                                                   data-productid="{{$latestproduct->id}}"><i
-                                                        class="icon-eye"></i><span>QUICK
-                                            VIEW</span></a> --}}
-                                            </div>
+                                            <!--<div class="prd-hide-mobile">-->
+                                            <!--    <a class="circle-label-qview view-product" data-fancybox-->
+                                            <!--       data-src="#news"-->
+                                            <!--       data-productid="{{$latestproduct->id}}"><i-->
+                                            <!--            class="icon-eye"></i><span>QUICK-->
+                                            <!--VIEW</span></a>-->
+                                            <!--</div>-->
                                         </div>
                                         <div class="prd-price">
                                         <!--<div class="price-old">$ {{$latestproduct->discount_amount}}</div>-->
