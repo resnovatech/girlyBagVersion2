@@ -65,14 +65,16 @@ class CustomerLoginController extends Controller
     public function customer_registration_post(Request $request){
 
         $this->validate($request, [
+            'phone' => 'required',
             'name' => 'required',
             'email' => 'email | unique:users',
             'lname' => 'required',
-            'password' => 'min:3',
+            'password' => 'min:8',
         ]);
 
         $store_data = new User();
         $store_data->name = $request->name;
+        $store_data->phone = $request->phone;
         $store_data->lname = $request->lname;
         $store_data->non_verified_email = $request->email;
         $store_data->password = Hash::make($request->password);
@@ -82,9 +84,14 @@ class CustomerLoginController extends Controller
                 Session::put('customerId',$customerId);
 
 
-                Mail::send('emails.emailVerificationEmail', ['id' => $customerId], function($message) use($request){
+                $fullName = $request->name.' '.$request->lname;
+
+                $sub = "🌸 Welcome to Girly Bag - Your Personal Women"."'"."s Health and Shopping Companion! 🛍";
+
+
+                Mail::send('emails.emailVerificationEmail', ['id' => $customerId,'email'=>$request->email,'name'=>$fullName], function($message) use($request,$sub){
                     $message->to($request->email);
-                    $message->subject('Confirmation Mail');
+                    $message->subject($sub);
                 });
 
         Toastr::success('Check Mail For Verification :)' ,'Success');
@@ -95,6 +102,7 @@ class CustomerLoginController extends Controller
     public function customer_data_store(Request $request){
 
         $this->validate($request, [
+            'phone' => 'required',
             'name' => 'required',
             'email' => 'email | unique:users',
             'lname' => 'required',
@@ -103,6 +111,7 @@ class CustomerLoginController extends Controller
 
 
         $store_data = new User();
+        $store_data->phone = $request->phone;
         $store_data->name = $request->name;
         $store_data->lname = $request->lname;
         $store_data->non_verified_email = $request->email;
@@ -112,11 +121,21 @@ class CustomerLoginController extends Controller
                 $customerId = $store_data->id;
                 Session::put('customerId',$customerId);
 
+                 $fullName = $request->name.' '.$request->lname;
 
-                Mail::send('emails.passwordResetEmail', ['id' => $customerId], function($message) use($request){
+                $sub = "🌸 Welcome to Girly Bag - Your Personal Women"."'"."s Health and Shopping Companion! 🛍";
+
+
+                Mail::send('emails.passwordResetEmail', ['id' => $customerId,'email'=>$request->email,'name'=>$fullName], function($message) use($request,$sub){
                     $message->to($request->email);
-                    $message->subject('Confirmation Mail');
+                    $message->subject($sub);
                 });
+
+
+                // Mail::send('emails.passwordResetEmail', ['id' => $customerId], function($message) use($request){
+                //     $message->to($request->email);
+                //     $message->subject('Confirmation Mail');
+                // });
 
         Toastr::success('Check Mail For Verification :)' ,'Success');
         return redirect()->route('customer_dashoard.login')->with('success','Check Mail For Verification ');
@@ -289,6 +308,31 @@ class CustomerLoginController extends Controller
 
 
            // Toastr::success('Successfully Updated :)' ,'Success');
+            return redirect()->back();
+
+
+
+
+
+        }
+
+
+        public function customer_addresss_store(Request $request){
+
+
+
+
+            $store_data = new ShipAddress();
+            $store_data->country = $request->country;
+            $store_data->dis = $request->dis;
+            $store_data->address = $request->address;
+            $store_data->phone = $request->phone;
+            $store_data->user_id = Auth::user()->id;
+            $store_data->save();
+
+
+
+            Toastr::success('Successfully Added :)' ,'Success');
             return redirect()->back();
 
 

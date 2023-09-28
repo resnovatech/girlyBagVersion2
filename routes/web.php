@@ -103,6 +103,10 @@ Route::get('/shipping', 'ShippingController@shippinindex')->name('shipping.index
 Route::post('/shipping/add', 'ShippingController@add')->name('shipping.store');
 
 
+
+Route::post('/customer_addresss_store', 'CustomerLoginController@customer_addresss_store')->name('customer_addresss_store');
+
+
 Route::get('/customer_addresss', 'CustomerLoginController@customer_addresss')->name('customer_addresss');
 Route::post('/customer_addresss_edit', 'CustomerLoginController@customer_addresss_edit')->name('customer_addresss_edit');
 
@@ -465,7 +469,7 @@ Route::post('/product_img_delete/{id}','Admin\ProductController@product_img_dele
 
 
     // Login Routes
-    // Route::get('/login', 'Admin\Auth\LoginController@showLoginForm')->name('admin.login');
+     Route::get('/login', 'Admin\Auth\LoginController@showLoginForm')->name('admin.login');
     Route::post('/login/submit', 'Admin\Auth\LoginController@login')->name('admin.login.submit');
 
     // Logout Routes

@@ -34,14 +34,113 @@
     }
 
 </style>
+<link rel="stylesheet" href="https://parsleyjs.org/src/parsley.css">
 <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jscroll/2.4.1/jquery.jscroll.min.js"></script>
-
+<script src="{{ asset('/')}}public/parsely1.js"></script>
 @yield('css')
 
+<style>
 
+    .parsley-required{
+
+        margin-top:10px;
+    }
+
+    .box
+
+    {
+
+     width:100%;
+
+     max-width:600px;
+
+     background-color:#f9f9f9;
+
+     border:1px solid #ccc;
+
+     border-radius:5px;
+
+     padding:16px;
+
+     margin:0 auto;
+
+    }
+
+    input.parsley-success,
+
+    select.parsley-success,
+
+    textarea.parsley-success {
+
+      color: #468847;
+
+      background-color: #DFF0D8;
+
+      border: 1px solid #D6E9C6;
+
+    }
+
+    input.parsley-error,
+
+    select.parsley-error,
+
+    textarea.parsley-error {
+
+      color: #B94A48;
+
+      background-color: #F2DEDE;
+
+      border: 1px solid #EED3D7;
+
+    }
+
+
+    .parsley-errors-list {
+
+      margin: 2px 0 3px;
+
+      padding: 0;
+
+      list-style-type: none;
+
+      font-size: 0.9em;
+
+      line-height: 0.9em;
+
+      opacity: 0;
+
+
+      transition: all .3s ease-in;
+
+      -o-transition: all .3s ease-in;
+
+      -moz-transition: all .3s ease-in;
+
+      -webkit-transition: all .3s ease-in;
+
+    }
+
+
+    .parsley-errors-list.filled {
+
+      opacity: 1;
+
+    }
+
+
+
+    .error,.parsley-type, .parsley-required, .parsley-equalto, .parsley-pattern, .parsley-length{
+
+     color:#ff0000;
+
+    }
+
+
+
+    </style>
 
 <script>
     $( function() {

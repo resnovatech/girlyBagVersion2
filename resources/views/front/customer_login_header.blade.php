@@ -47,7 +47,7 @@ The GirlyBag
                         </form>
                         <div class="clearfix">
 
-                            <label for="checkbox1">Don't Have Account ,<a href="{{ route('customer_dashoard.register') }}" class="custom-color" >Register Here</a>
+                            <label for="checkbox1">Don't Have Account ,<a href="{{ route('customer_dashoard_header.register') }}" class="custom-color" >Register Here</a>
                                 </label>
                         </div>
                     </div>

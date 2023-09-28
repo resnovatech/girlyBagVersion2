@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use DB;
 use Image;
+use Mail;
 use App\Category;
 use App\User;
 use App\Subcategory;
@@ -603,9 +604,18 @@ $secondDateThirdLevel = date('Y-m-d', strtotime($firstDateThirdLevel. ' + '. $re
                       //Toastr::success('Successfull :)' ,'Success');
 
 
+                                 $fullName = Auth::user()->name.' '.Auth::user()->lname;
+                                 $cus_email = Auth::user()->email;
+                                 $lastOder = Order::where('user_id',Auth::user()->id)->orderBy('id','desc')->first();
+                                 $lastShipAddress = ShipAddress::where('user_id',Auth::user()->id)->orderBy('id','desc')->first();
+                                 $lastoOrderList =Orderlist::where('order_id',$lastOder->id)->latest()->get();
+                                 
+                                 $sub = "🌟 Order Confirmed - Get Ready to Unleash Your Glamour and Cycle Power! 🌟";
 
-
-
+Mail::send('emails.orderEmail', ['fullName' => $fullName,'cus_email'=>$cus_email,'lastOder'=>$lastOder,'lastShipAddress'=>$lastShipAddress,'lastoOrderList'=>$lastoOrderList], function($message) use($cus_email,$sub){
+                    $message->to($cus_email);
+                    $message->subject($sub);
+                });
 
                       $cartCollection = \Cart::getContent();
                       return view('front.success',['cartCollection'=>$cartCollection]);

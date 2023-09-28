@@ -2,7 +2,7 @@
 
 
 @section('title')
-The GirlyBag
+The GirlyBag | Registration
 
 @endsection
 
@@ -27,7 +27,7 @@ The GirlyBag
                     <div class="form-wrapper">
                         <p>@include('flash_message')</p>
                         <p>To access your whishlist, address book and contact preferences and to take advantage of our speedy checkout, create an account with us now.</p>
-                        <form action="{{ route('customer_registration_post') }}" method="post"  class="needs-validation" novalidate>
+                        <form action="{{ route('customer_registration_post') }}" method="post"   enctype="multipart/form-data" id="form" data-parsley-validate="">
                             @csrf
                             <div class="row">
                                 <div class="col-sm-9">
@@ -45,13 +45,20 @@ The GirlyBag
                                 </div>
                             </div>
                             <div class="form-group">
-                                <input type="email" class="form-control" placeholder="E-mail" name="email" >
+                                <input type="email" class="form-control" placeholder="E-mail" name="email" required>
+                            </div>
+
+                            <div class="form-group">
+                                <input  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                                type = "number"
+                                maxlength = "11" minlength="11" class="form-control" placeholder="Mobile Number" name="phone" required>
+                            </div>
+
+                            <div class="form-group">
+                                <input type="password" class="form-control" placeholder="Password" name="password" required>
                             </div>
                             <div class="form-group">
-                                <input type="password" class="form-control" placeholder="Password" name="password">
-                            </div>
-                            <div class="form-group">
-                                <input type="password" class="form-control" placeholder="Confirm Password" name="password_confirmation">
+                                <input type="password" class="form-control" placeholder="Confirm Password" name="password_confirmation" required>
                             </div>
                             <div class="clearfix">
                                 <input id="checkbox1" name="checkbox1" type="checkbox" checked="checked">
@@ -64,7 +71,7 @@ The GirlyBag
 
                         <div class="clearfix">
 
-                            <label for="checkbox1">Already have an account ,<a href="{{ route('customer_dashoard.login') }}" class="custom-color" >Sign in Here</a>
+                            <label for="checkbox1">Already have an account ,<a href="{{ route('customer_dashoard_header.login') }}" class="custom-color" >Sign in Here</a>
                                 </label>
                         </div>
                     </div>

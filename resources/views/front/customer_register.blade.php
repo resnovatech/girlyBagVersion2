@@ -37,18 +37,26 @@ The GirlyBag
                                 </div>
                                 <div class="col-sm-9">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" placeholder="Last name" name="lname">
+                                        <input type="text" class="form-control" placeholder="Last name" name="lname" required>
                                     </div>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <input type="email" class="form-control" placeholder="E-mail" name="email">
+                                <input type="email" class="form-control" placeholder="E-mail" name="email" required>
+                            </div>
+
+                            <div class="form-group">
+                                <input  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                                type = "number"
+                                maxlength = "11" minlength="11" class="form-control" placeholder="Mobile Number" name="phone" required>
+                            </div>
+
+                            
+                            <div class="form-group">
+                                <input type="password" class="form-control" placeholder="Password" name="password" required>
                             </div>
                             <div class="form-group">
-                                <input type="password" class="form-control" placeholder="Password" name="password">
-                            </div>
-                            <div class="form-group">
-                                <input type="password" class="form-control" placeholder="Confirm Password" name="password">
+                                <input type="password" class="form-control" placeholder="Confirm Password" name="password" required>
                             </div>
                             <div class="clearfix">
                                 <input id="checkbox1" name="checkbox1" type="checkbox" checked="checked">

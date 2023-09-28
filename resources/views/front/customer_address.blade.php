@@ -40,6 +40,11 @@ The GirlyBag
                                     <h3>Address 1 (Default)</h3>
                                     <p>Not Available</p>
 
+                                    <div class="mt-2 clearfix">
+                                        <a href="#" class="link-icn js-show-form" data-form="#updateAddress"><i class="icon-plus-sign"></i>Add</a>
+                                        <!--<a href="#" class="link-icn ml-1 float-right"><i class="icon-cross"></i>Delete</a>-->
+                                    </div>
+
                                 </div>
 
                             </div>
@@ -59,6 +64,49 @@ The GirlyBag
                                 </div>
                             </div>
                         </div>-->
+                    </div>
+
+                    <div class="card mt-3 d-none" id="updateAddress">
+                        <form action="{{ route('customer_addresss_store') }}" method="post">
+                            @csrf
+                        <div class="card-body">
+                            <h3>Edit Address</h3>
+                            <label class="text-uppercase">Country:</label>
+                            <div class="form-group select-wrapper">
+                                <select class="form-control" name="country">
+                                    <option value="Bangladesh">Banglades</option>
+
+                                </select>
+                            </div>
+                            <label class="text-uppercase">District:</label>
+                            <div class="form-group select-wrapper">
+                                <select class="form-control" name="dis">
+                                    <option value="Dhaka">Dhaka</option>
+
+                                </select>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <label class="text-uppercase">Phone:</label>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" name="phone" value="">
+                                        <input type="hidden" class="form-control" name="id" value="">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <label class="text-uppercase">Address:</label>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" name="address" value="">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mt-2">
+                                <button type="reset" class="btn btn--alt js-close-form" data-form="#updateAddress">Cancel</button>
+                                <button type="submit" class="btn ml-1">Add Address</button>
+                            </div>
+                        </div>
+                    </form>
                     </div>
 
                 </div>

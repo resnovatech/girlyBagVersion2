@@ -34,8 +34,8 @@ The GirlyBag
                             <div class="card">
                                 <div class="card-body">
                                     <h3>Personal Info</h3>
-                                    <p><b>First Name:</b> {{ Auth::user()->name }}<br>
-                                        <b>Last Name:</b> {{ Auth::user()->lname }}<br>
+                                    <p><b>Name:</b> {{ Auth::user()->name.' '.Auth::user()->lname }}<br>
+                                        {{-- <b>Last Name:</b> {{ Auth::user()->lname }}<br> --}}
                                         <b>E-mail:</b> {{ Auth::user()->email }}<br>
                                         <b>Phone:</b> {{ Auth::user()->phone }}</p>
                                         <b>Reward Point:</b> {{ $total_reward_point*$product_quantity}}</p>

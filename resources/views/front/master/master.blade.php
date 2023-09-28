@@ -22,6 +22,7 @@
         rel="stylesheet">
 
     @yield('css')
+    <link rel="stylesheet" href="https://parsleyjs.org/src/parsley.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-typeahead/2.11.0/jquery.typeahead.css"
         integrity="sha512-AQG3JVpy/h0TsLsFs/HDLjnkq1ih9uUliGGXdQ7LQcGQt7GD+1b7HWOQ2oeCH7tKdtrfRg75CGApafi+//9Dbw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -30,8 +31,9 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script src="{{ asset('/')}}public/parsely1.js"></script>
 
-<body>
+
 
     <style>
         .searchImage {
@@ -40,7 +42,105 @@
         }
 
     </style>
+<style>
 
+    .parsley-required{
+
+        margin-top:10px;
+    }
+
+    .box
+
+    {
+
+     width:100%;
+
+     max-width:600px;
+
+     background-color:#f9f9f9;
+
+     border:1px solid #ccc;
+
+     border-radius:5px;
+
+     padding:16px;
+
+     margin:0 auto;
+
+    }
+
+    input.parsley-success,
+
+    select.parsley-success,
+
+    textarea.parsley-success {
+
+      color: #468847;
+
+      background-color: #DFF0D8;
+
+      border: 1px solid #D6E9C6;
+
+    }
+
+    input.parsley-error,
+
+    select.parsley-error,
+
+    textarea.parsley-error {
+
+      color: #B94A48;
+
+      background-color: #F2DEDE;
+
+      border: 1px solid #EED3D7;
+
+    }
+
+
+    .parsley-errors-list {
+
+      margin: 2px 0 3px;
+
+      padding: 0;
+
+      list-style-type: none;
+
+      font-size: 0.9em;
+
+      line-height: 0.9em;
+
+      opacity: 0;
+
+
+      transition: all .3s ease-in;
+
+      -o-transition: all .3s ease-in;
+
+      -moz-transition: all .3s ease-in;
+
+      -webkit-transition: all .3s ease-in;
+
+    }
+
+
+    .parsley-errors-list.filled {
+
+      opacity: 1;
+
+    }
+
+
+
+    .error,.parsley-type, .parsley-required, .parsley-equalto, .parsley-pattern, .parsley-length{
+
+     color:#ff0000;
+
+    }
+
+
+
+    </style>
     </head>
 
     <body class="template-product template-collection has-smround-btns has-loader-bg equal-height has-sm-container">
