@@ -502,7 +502,10 @@ $secondDateThirdLevel = date('Y-m-d', strtotime($firstDateThirdLevel. ' + '. $re
                       if(Auth::guest()){
 
                         $mainOrder = new Order();
+                        $mainOrder->delivery_charge = 40;
+
                         $mainOrder->user_id = $userId;
+
                         $mainOrder->shipping_id =  $shippingId;
                         $mainOrder->pin ='GBAG-'.rand('10000000','99999999');
                         $mainOrder->date =  date('d-m-Y');
@@ -510,10 +513,10 @@ $secondDateThirdLevel = date('Y-m-d', strtotime($firstDateThirdLevel. ' + '. $re
 
                         if(Session::has('final_price')){
                             $mainOrder->discount_amount  =Session::get('final_price');
-                            $mainOrder->order_total  =$new_card_sub - Session::get('final_price');
+                            $mainOrder->order_total  =($new_card_sub - Session::get('final_price')) + 40;
                         }else{
 
-                            $mainOrder->order_total=$new_card_sub;
+                            $mainOrder->order_total=$new_card_sub + 40 ;
                         }
                         $mainOrder->save();
 
@@ -542,16 +545,17 @@ $secondDateThirdLevel = date('Y-m-d', strtotime($firstDateThirdLevel. ' + '. $re
                       }else{
 
                           $mainOrder = new Order();
+                          $mainOrder->delivery_charge = 40;
                           $mainOrder->user_id = Auth::user()->id;
                         $mainOrder->shipping_id =  $shippingId;
                         $mainOrder->date =  date('d-m-Y');
                         $mainOrder->pin ='GBAG-'.rand('10000000','99999999');
                         if(Session::has('final_price')){
                             $mainOrder->discount_amount  =Session::get('final_price');
-                            $mainOrder->order_total  =$new_card_sub - Session::get('final_price');
+                            $mainOrder->order_total  =($new_card_sub - Session::get('final_price')) + 40;
                         }else{
 
-                            $mainOrder->order_total=$new_card_sub;
+                            $mainOrder->order_total=$new_card_sub + 40;
                         }
                         $mainOrder->save();
 
@@ -609,7 +613,7 @@ $secondDateThirdLevel = date('Y-m-d', strtotime($firstDateThirdLevel. ' + '. $re
                                  $lastOder = Order::where('user_id',Auth::user()->id)->orderBy('id','desc')->first();
                                  $lastShipAddress = ShipAddress::where('user_id',Auth::user()->id)->orderBy('id','desc')->first();
                                  $lastoOrderList =Orderlist::where('order_id',$lastOder->id)->latest()->get();
-                                 
+
                                  $sub = "🌟 Order Confirmed - Get Ready to Unleash Your Glamour and Cycle Power! 🌟";
 
 Mail::send('emails.orderEmail', ['fullName' => $fullName,'cus_email'=>$cus_email,'lastOder'=>$lastOder,'lastShipAddress'=>$lastShipAddress,'lastoOrderList'=>$lastoOrderList], function($message) use($cus_email,$sub){

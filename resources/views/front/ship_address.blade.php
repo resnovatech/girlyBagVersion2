@@ -2,7 +2,7 @@
 
 
 @section('title')
-The GirlyBag
+Check Out Page
 
 @endsection
 
@@ -48,7 +48,7 @@ use App\Http\Controllers\MainController;
                                     faster payment.</p>
                                 <div class="row mt-2">
                                     <div class="col-sm-9">
-                                        <label>First Name:</label>
+                                        <label>First Name:<span class="text-danger">*</span></label>
                                         <div class="form-group">
                                             @if(Session::has('fname'))
                                             <input type="text" class="form-control form-control--sm" name="fname"
@@ -60,7 +60,7 @@ use App\Http\Controllers\MainController;
                                         </div>
                                     </div>
                                     <div class="col-sm-9">
-                                        <label>Last Name:</label>
+                                        <label>Last Name:<span class="text-danger">*</span></label>
                                         <div class="form-group">
                                             @if(Session::has('lname'))
                                             <input type="text" class="form-control form-control--sm" name="lname"
@@ -73,7 +73,7 @@ use App\Http\Controllers\MainController;
                                     </div>
                                 </div>
                                 <div class="mt-2"></div>
-                                <label>Country:</label>
+                                <label>Country:<span class="text-danger">*</span></label>
                                 <div class="form-group select-wrapper">
                                     @if(Session::has('country'))
                                     <select class="form-control form-control--sm" name="country" required>
@@ -92,7 +92,7 @@ use App\Http\Controllers\MainController;
                                 </div>
                                 <div class="row">
                                     <div class="col-sm-9">
-                                        <label>Area:</label>
+                                        <label>Area:<span class="text-danger">*</span></label>
                                         <div class="form-group select-wrapper">
                                             @if(Session::has('area_name'))
 
@@ -109,9 +109,10 @@ use App\Http\Controllers\MainController;
                                             </select>
                                             @endif
                                         </div>
+                                        <small class="text-danger">Delivery Currently Available Only Inside Dhaka</small>
                                     </div>
                                     <div class="col-sm-9">
-                                        <label>Phone:</label>
+                                        <label>Phone:<span class="text-danger">*</span></label>
                                         <div class="form-group">
                                             @if(Session::has('phone'))
 
@@ -126,7 +127,7 @@ use App\Http\Controllers\MainController;
                                     </div>
                                 </div>
                                 <div class="mt-2"></div>
-                                <label>Address 1:</label>
+                                <label>Address :<span class="text-danger">*</span></label>
                                 <div class="form-group">
                                     @if(Session::has('address'))
                                     <input type="text" class="form-control form-control--sm" name="address"
@@ -136,7 +137,7 @@ use App\Http\Controllers\MainController;
                                     @endif
                                 </div>
                                 <div class="mt-2"></div>
-                                <label>Last Period Date:ss</label>
+                                <label>Last Period Date:<span class="text-danger">*</span></label>
                                 <div class="form-group">
                                     @if(Session::has('pdate'))
                                     <input type="date" class="form-control form-control--sm" name="pdate"
@@ -303,8 +304,11 @@ use App\Http\Controllers\MainController;
                         @else
                         <div class="cart-total-sm">
 
+                            <span>Delivery Charge</span>
+                            <span class="card-total-price">৳ <del>70</del> 40 </span>
+
                             <span>Subtotal</span>
-                            <span class="card-total-price">৳ {{ \Cart::getTotal() }} </span>
+                            <span class="card-total-price">৳ {{ \Cart::getTotal() + 40 }} </span>
                         </div>
 
                         @endif
@@ -344,7 +348,7 @@ use App\Http\Controllers\MainController;
 
                                 <div class="row mt-2">
                                     <div class="col-sm-9">
-                                        <label>First Name:</label>
+                                        <label>First Name:<span class="text-danger">*</span></label>
                                         <div class="form-group">
                                             @if(Session::has('fname'))
                                             <input type="text" class="form-control form-control--sm" name="fname"
@@ -408,6 +412,7 @@ use App\Http\Controllers\MainController;
                                             </select>
                                             @endif
                                         </div>
+                                        <small class="text-danger">Delivery Currently Available Only Inside Dhaka</small>
                                     </div>
 
 
@@ -486,7 +491,7 @@ use App\Http\Controllers\MainController;
 
                                 <div class="row mt-2">
                                     <div class="col-sm-9">
-                                        <label>First Name:</label>
+                                        <label>First Name:<span class="text-danger">*</span></label>
                                         <div class="form-group">
                                             <input type="text" class="form-control form-control--sm" name="fname"
                                                 value="{{ $stock->Fname }}">
@@ -495,7 +500,7 @@ use App\Http\Controllers\MainController;
                                         </div>
                                     </div>
                                     <div class="col-sm-9">
-                                        <label>Last Name:</label>
+                                        <label>Last Name:<span class="text-danger">*</span></label>
                                         <div class="form-group">
                                             <input type="text" class="form-control form-control--sm" name="lname"
                                                 value="{{ $stock->lname }}">
@@ -503,7 +508,7 @@ use App\Http\Controllers\MainController;
                                     </div>
                                 </div>
                                 <div class="mt-2"></div>
-                                <label>Country:</label>
+                                <label>Country:<span class="text-danger">*</span></label>
                                 <div class="form-group select-wrapper">
                                     <select class="form-control form-control--sm" name="country">
                                         <option value="BanglaDesh">BanglaDesh</option>
@@ -512,7 +517,8 @@ use App\Http\Controllers\MainController;
                                 </div>
                                 <div class="row">
                                     <div class="col-sm-9">
-                                        <label>Area:</label>
+                                        <label>Area:<span class="text-danger">*</span></label>
+
                                         <div class="form-group select-wrapper">
                                             @if(Session::has('area_name'))
 
@@ -530,10 +536,13 @@ use App\Http\Controllers\MainController;
                                                 @endforeach
                                             </select>
                                             @endif
+
+
                                         </div>
+                                        <small class="text-danger">Delivery Currently Available Only Inside Dhaka</small>
                                     </div>
                                     <div class="col-sm-9">
-                                        <label>Phone:</label>
+                                        <label>Phone:<span class="text-danger">*</span></label>
                                         <div class="form-group">
                                             <input type="text" class="form-control form-control--sm" name="phone"
                                                 value="{{ $stock->phone }}">
@@ -541,51 +550,51 @@ use App\Http\Controllers\MainController;
                                     </div>
                                 </div>
                                 <div class="mt-2"></div>
-                                <label>Address 1:</label>
+                                <label>Address :<span class="text-danger">*</span></label>
                                 <div class="form-group">
                                     <input type="text" class="form-control form-control--sm" name="address"
                                         value="{{ $stock->address }}">
                                 </div>
                                 <div class="mt-2"></div>
-                                <label>Last Period Date:</label>
+                                <label>Last Period Date:<span class="text-danger">*</span></label>
                                 <div class="form-group">
                                     @if(Session::has('pdate'))
-                                    <input type="text" class="form-control form-control--sm" name="pdate"
+                                    <input type="text" placeholder="Enter Here" class="form-control form-control--sm" name="pdate"
                                         value="{{ Session::get('pdate') }}" id="datetimepicker12" required>
                                     @else
-                                    <input type="text" class="form-control form-control--sm" name="pdate"
+                                    <input type="text" placeholder="Enter Here" class="form-control form-control--sm" name="pdate"
                                         id="datetimepicker12" required>
                                     @endif
                                 </div>
                                 <div class="row mt-2">
                                     <div class="col-sm-9">
-                                        <label>long does a period last?</label>
+                                        <label>long does a period last?<span class="text-danger">*</span></label>
                                         <div class="form-group">
                                             @if(Session::has('total_days'))
 
-                                            <input type="text" class="form-control form-control--sm" name="total_days"
+                                            <input type="text" placeholder="Enter Here" class="form-control form-control--sm" name="total_days"
                                                 value="{{ Session::get('total_days') }}">
 
                                             @else
-                                            <input type="text" class="form-control form-control--sm" name="total_days">
+                                            <input type="text" placeholder="Enter Here" class="form-control form-control--sm" name="total_days">
                                             @endif
                                         </div>
                                     </div>
                                     <div class="col-sm-9">
-                                        <label>How long is your cycle?</label>
+                                        <label>How long is your cycle?<span class="text-danger">*</span></label>
                                         <div class="form-group">
                                             @if(Session::has('cycle'))
 
-                                            <input type="text" class="form-control form-control--sm" name="cycle"
+                                            <input type="text" placeholder="Enter Here" class="form-control form-control--sm" name="cycle"
                                                 value="{{ Session::get('cycle') }}">
 
                                             @else
-                                            <input type="text" class="form-control form-control--sm" name="cycle">
+                                            <input type="text" placeholder="Enter Here" class="form-control form-control--sm" name="cycle">
                                             @endif
                                         </div>
                                     </div>
                                 </div>
-                                <div class="clearfix">
+                                <div class="clearfix mt-2">
                                     <input id="formcheckoutCheckbox1" name="cstatus" type="checkbox" value="1">
                                     <label for="formcheckoutCheckbox1">Save address to my account</label>
                                 </div>
@@ -807,8 +816,12 @@ use App\Http\Controllers\MainController;
                             <span class="card-total-price">৳ {{ $total + Session::get('ship_price')  }} </span>
                             @else
 
+
+                            <span>Delivery Charge</span>
+                            <span class="card-total-price">৳ <del>70</del> 40 </span>
+
                             <span>Subtotal</span>
-                            <span class="card-total-price">৳ {{ $total}} </span>
+                            <span class="card-total-price">৳ {{ $total + 40 }} </span>
                             @endif
                         </div>
 
