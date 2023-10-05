@@ -94,7 +94,7 @@ class CustomerLoginController extends Controller
                     $message->subject($sub);
                 });
 
-        Toastr::success('Check Mail For Verification :)' ,'Success');
+        //Toastr::success('Check Mail For Verification :)' ,'Success');
         return redirect('customer_login')->with('success','Check Mail For Verification ');
     }
 
@@ -137,7 +137,7 @@ class CustomerLoginController extends Controller
                 //     $message->subject('Confirmation Mail');
                 // });
 
-        Toastr::success('Check Mail For Verification :)' ,'Success');
+        //Toastr::success('Check Mail For Verification :)' ,'Success');
         return redirect()->route('customer_dashoard.login')->with('success','Check Mail For Verification ');
 
 
@@ -154,6 +154,11 @@ class CustomerLoginController extends Controller
         ]);
 
 
+
+
+
+
+
 			if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
 				// Redirect to dashboard
 				//Toastr::success('Successully login :)' ,'Success');
@@ -163,7 +168,7 @@ class CustomerLoginController extends Controller
 
 				// error
 			  //Toastr::error('Invalid email and password :)' ,'Error');
-				return redirect()->back();
+				return redirect()->back()->with('error','email or password worng');
 			}
 
     }
@@ -181,13 +186,13 @@ class CustomerLoginController extends Controller
 			if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
 				// Redirect to dashboard
 				//Toastr::success('Successully login :)' ,'Success');
-				return redirect('/shipping');
+				return redirect('/shipping')->with('success','Successfully Login');;
 			} else {
 				// Search using username
 
 				// error
 			  //Toastr::error('Invalid email and password :)' ,'Error');
-				return redirect()->back();
+				return redirect()->back()->with('error','email or password worng');;
 			}
 		}
 
@@ -199,7 +204,7 @@ class CustomerLoginController extends Controller
         $store_data->email = $userList;
         $store_data->save();
 
-       Toastr::success('Successfully Confirmed,Now Login:)' ,'Success');
+       //Toastr::success('Successfully Confirmed,Now Login:)' ,'Success');
         return redirect()->route('customer_dashoard.login')->with('success','Successfully Confirmed,Now Login');
 
        }
@@ -212,7 +217,7 @@ class CustomerLoginController extends Controller
         $store_data->email = $userList;
         $store_data->save();
 
-        Toastr::success('Successfully Confirmed,Now Login:)' ,'Success');
+       // Toastr::success('Successfully Confirmed,Now Login:)' ,'Success');
         return redirect('customer_login')->with('success','Successfully Confirmed,Now Login');
        }
 
@@ -332,8 +337,8 @@ class CustomerLoginController extends Controller
 
 
 
-            Toastr::success('Successfully Added :)' ,'Success');
-            return redirect()->back();
+            //Toastr::success('Successfully Added :)' ,'Success');
+            return redirect()->back()->with('success','Successfully Added :)');
 
 
 

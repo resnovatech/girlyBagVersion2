@@ -1,51 +1,76 @@
+<style>
+    .alert {
+      padding: 20px;
+      background-color: #f44336;
+      color: white;
+    }
+
+
+    .alert1 {
+      padding: 20px;
+      background-color: #0a8676;
+      color: white;
+    }
+
+
+
+    .closebtn {
+      margin-left: 15px;
+      color: white;
+      font-weight: bold;
+      float: right;
+      font-size: 22px;
+      line-height: 20px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .closebtn:hover {
+      color: black;
+    }
+    </style>
+
+
 @if ($message = Session::get('success'))
 
-<div class="mt-3 alert alert-success alert-dismissible fade show" role="alert">
-    <i class="uil uil-check me-2"></i>
-    {{ $message }}
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
-
-    </button>
-</div>
+<div class="alert1">
+    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+    <strong>success!</strong> {{ $message }}
+  </div>
 
 @endif
 
 @if ($message = Session::get('error'))
-<div class="mt-3 alert alert-danger alert-dismissible fade show" role="alert">
-    <i class="uil uil-exclamation-octagon me-2"></i>
-    {{ $message }}
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
-
-    </button>
-</div>
+<div class="alert">
+    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+    <strong>Danger!</strong>
+   {{ $message }}
+  </div>
 @endif
 
 @if ($message = Session::get('warning'))
-<div class="mt-3 alert alert-warning alert-dismissible fade show" role="alert">
-    <i class="uil uil-check me-2"></i>
-    {{ $message }}
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
-
-    </button>
-</div>
+<div class="alert1">
+    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+    <strong>success!</strong> {{ $message }}
+  </div>
 @endif
 
 @if ($message = Session::get('info'))
-<div class="mt-3 alert alert-info alert-dismissible fade show" role="alert">
-    <i class="uil uil-check me-2"></i>
-    {{ $message }}
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
-
-    </button>
-</div>
+<div class="alert">
+    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+    <strong>success!</strong> {{ $message }}
+  </div>
 @endif
 
 @if ($errors->any())
-<div class="mt-3 alert alert-danger alert-dismissible fade show" role="alert">
-    <i class="uil uil-exclamation-octagon me-2"></i>
-Please Check The Below Error
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
-
-    </button>
-</div>
+<div class="alert">
+    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+    <strong>Danger!</strong>
+    @if ($errors->has('email'))
+   {{ $errors->first('email') }} <br>
+@endif
+@if ($errors->has('password'))
+{{ $errors->first('password') }} <br>
+@endif
+  </div>
 @endif

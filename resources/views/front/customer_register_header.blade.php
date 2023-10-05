@@ -10,6 +10,7 @@ The GirlyBag | Registration
 
 
 @section('body')
+
 <div class="page-content">
     <div class="holder breadcrumbs-wrap mt-0">
         <div class="container">
@@ -23,7 +24,13 @@ The GirlyBag | Registration
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-18 col-lg-12">
-                    <h2 class="text-center">Create an Account</h2>
+                    <h2 class="text-center">
+
+                        Create an Account
+                       
+
+
+                    </h2>
                     <div class="form-wrapper">
                         <p>@include('flash_message')</p>
                         <p>To access your whishlist, address book and contact preferences and to take advantage of our speedy checkout, create an account with us now.</p>
@@ -46,6 +53,8 @@ The GirlyBag | Registration
                             </div>
                             <div class="form-group">
                                 <input type="email" class="form-control" placeholder="E-mail" name="email" required>
+
+
                             </div>
 
                             <div class="form-group">

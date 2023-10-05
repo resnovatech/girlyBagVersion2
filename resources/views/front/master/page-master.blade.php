@@ -177,7 +177,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
     <script src="https://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
-    {!! Toastr::message() !!}
+    {{-- {!! Toastr::message() !!}
        <script>
 @if($errors->any())
     @foreach($errors->all() as $error)
@@ -187,7 +187,7 @@
            });
     @endforeach
 @endif
-</script>
+</script> --}}
 
 @yield('scripts')
 

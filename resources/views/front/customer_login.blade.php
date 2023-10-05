@@ -33,10 +33,21 @@ The GirlyBag
                             @csrf
 
                             <div class="form-group">
-                                <input type="text" class="form-control" placeholder="E-mail" name="email" required>
+                                <input type="text" class="form-control" placeholder="E-mail" id="email" name="email" required>
+
+                                @if ($errors->has('email'))
+                                <span class="text-danger">{{ $errors->first('email') }}</span>
+                            @endif
+
+
                             </div>
                             <div class="form-group">
-                                <input type="password" class="form-control" placeholder="Password" name="password" required>
+                                <input type="password" class="form-control" placeholder="Password" id="password" name="password" required>
+
+
+                                @if ($errors->has('password'))
+                                <span class="text-danger">{{ $errors->first('password') }}</span>
+                            @endif
                             </div>
 
 
